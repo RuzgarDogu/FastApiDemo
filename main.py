@@ -1,23 +1,6 @@
-from fastapi import FastAPI
+from blog import create_app
 
-app = FastAPI()
+app = create_app()
 
-@app.get('/')
-def index():
-    r = {
-        'data': {
-            'foo':'bar',
-            'bar': 3
-        }
-    }
-    return r
-
-@app.get('/about')
-def about():
-    r = {
-        'data': {
-            'about':'bar',
-            'bar': 3
-        }
-    }
-    return r
+if __name__ == '__main__':
+    app.run(debug=True)
