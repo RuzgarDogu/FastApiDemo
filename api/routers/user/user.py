@@ -1,8 +1,8 @@
 from typing import List
 from fastapi import APIRouter, Depends, status
-from blog import schemas, database, models
+from api import schemas, database
 from sqlalchemy.orm import Session
-from blog.repository import user
+from api.modelfunctions import user
 
 # tags > docs kısmındaki bölümleme için
 router = APIRouter(

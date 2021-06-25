@@ -1,8 +1,8 @@
 from typing import List
 from fastapi import APIRouter, Depends, status
-from blog import schemas, database, models, oauth2
+from api import schemas, database, oauth2
 from sqlalchemy.orm import Session
-from blog.repository import blog
+from api.modelfunctions import blog
 
 
 router = APIRouter(
@@ -45,5 +45,4 @@ client tarafına göndereceğimiz model.
 """
 @router.get('/{id}', status_code=200, response_model=schemas.ShowBlog)
 def show(id:int, db: Session=Depends(get_db), current_user:schemas.User = Depends(oauth2.get_current_user)):
-    # return db.query(models.Blog).filter(models.Blog.id == id).first()
     return blog.show(id,db)
