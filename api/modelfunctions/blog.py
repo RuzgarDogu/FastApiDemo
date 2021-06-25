@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from .. import schemas
+from api.utils import schemas
 from fastapi import HTTPException, status
 from api.models.blog import Blog
 def get_all(db:Session):

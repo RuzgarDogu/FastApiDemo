@@ -1,6 +1,6 @@
 import os, glob
 from fastapi import FastAPI
-from api.utils.database import engine
+from .database import engine
 # from .routers import blog, user, authentication
 # from .routers.authentication import authentication
 # from .routers.blog import blog
