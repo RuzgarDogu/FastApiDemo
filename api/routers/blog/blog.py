@@ -15,10 +15,13 @@ get_db = database.get_db
 """
 Bazı apiler için user girişi gerekli olabilir. O yüzden onlar için depends tanımlanıyor.
 get_current_user:schemas.User = Depends(oauth2.get_current_user)
+
+Query Parameters
+Örn: site.com/blog/?limit=3
 """
 @router.get('/', response_model=List[schemas.ShowBlog])
-def all(db: Session=Depends(get_db), current_user:schemas.User = Depends(oauth2.get_current_user)):
-    return blog.get_all(db)
+def all(limit:int=None, db: Session=Depends(get_db), current_user:schemas.User = Depends(oauth2.get_current_user)):
+    return blog.get_all(db,limit)
 
 """
 API'ye post etmek için aşağıdaki kullanılıyor.

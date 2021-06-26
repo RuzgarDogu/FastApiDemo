@@ -2,8 +2,12 @@ from sqlalchemy.orm import Session
 from api.utils import schemas
 from fastapi import HTTPException, status
 from api.models.blog import Blog
-def get_all(db:Session):
-    blogs = db.query(Blog).all()
+
+def get_all(db:Session, limit:int):
+    if limit:
+        blogs = db.query(Blog).limit(limit).all()
+    else:
+        blogs = db.query(Blog).all()
     return blogs
 
 def create(request:schemas.Blog, db:Session):

@@ -10,7 +10,11 @@ from api.utils.database import engine
 
 
 def create_app():
-    _app = FastAPI()
+    _app = FastAPI(
+        title="FastAPI Test Project",
+        description="This is a very simple FastAPI project, with auto docs for the API and everything",
+        version="0.2.0",
+    )
 
     # Base.metadata.create_all(bind=engine)
     # user.Base.metadata.create_all(bind=engine)
