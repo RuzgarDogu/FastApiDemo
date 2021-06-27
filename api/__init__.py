@@ -1,23 +1,17 @@
 import os, glob
 from fastapi import FastAPI
 from api.utils.database import engine
-# from .routers import blog, user, authentication
-# from .routers.authentication import authentication
-# from .routers.blog import blog
-# from .routers.user import user
-# from . import models
-# from api.models.blog import Base
-
+from .docs_config import docsettings
 
 def create_app():
     _app = FastAPI(
-        title="FastAPI Test Project",
-        description="This is a very simple FastAPI project, with auto docs for the API and everything",
-        version="0.2.0",
+        title=docsettings.title,
+        description=docsettings.description,
+        version=docsettings.version,
+        openapi_tags=docsettings.openapi_tags,
+        docs_url=docsettings.docs_url,
+        redoc_url=docsettings.redoc_url
     )
-
-    # Base.metadata.create_all(bind=engine)
-    # user.Base.metadata.create_all(bind=engine)
 
     """ Modelleri yüklüyoruz """
     names = [os.path.basename(x) for x in glob.glob('api/models/*')]
